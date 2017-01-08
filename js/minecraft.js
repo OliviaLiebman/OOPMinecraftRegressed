@@ -1,10 +1,9 @@
 
 'use strict';
-
+var selected_tool = '';
 var GameManager = function() {
     this.cells = this.initGame();
 };
-
 GameManager.prototype.initGame = function() {
     var cells = this._initGrid();
     this._setUpGame(cells);
@@ -13,6 +12,7 @@ GameManager.prototype.initGame = function() {
 
 GameManager.prototype._initGrid = function() {
     var cells = {};
+    var self = this;
     for (var i = 0; i <20; i++){//i = y coord
         $(".grid").append('<div class="row"></div>');
 
@@ -20,14 +20,23 @@ GameManager.prototype._initGrid = function() {
             $(".row").eq(i).append('<div class="cell"></div>');
             //make an instance of Cell called Cells[key] where key is the xy of the cell
             cells[j+''+i] = new Cell($(".row:eq("+i+") .cell").eq(j).attr("id", j+"-"+i), this._clickedCell.bind(this));//j = x coord. Makes id: #j-i
-
         }
     }
+    $('.tool').click(function() {
+        self.selectedTool = $(this).attr('id');
+        selected_tool = self.selectedTool;
+
+    });
     return cells;
 };
-
 GameManager.prototype._clickedCell = function(cell) {
-    console.log(cell);
+    if (cell.isClickable(selected_tool) ) {
+        var currentDataType = cell.getAttr('data-type');
+        cell.pullClass(currentDataType);
+        $('#showMaterial').removeClass();
+        $('#showMaterial').addClass('tool');
+        $('#showMaterial').addClass(currentDataType);
+    }
 
 };
 
@@ -50,21 +59,21 @@ GameManager.prototype._makeStone = function(cells) {
     var stoneArr = ['1913', '1413', '1313'];
     for (let i = 0; i < stoneArr.length; i++) {
         let index = stoneArr[i];
-        cells[index].setBackgroundImg('url(./images/stone.jpg)').setClass('stone');
+        cells[index].setClass('stone');
     }
 };
 GameManager.prototype._makeTrunk = function(cells) {
     var trunkArr = ['1613', '1612', '1611'];
     for (let i = 0; i < trunkArr.length; i++) {
         let index = trunkArr[i];
-        cells[index].setBackgroundImg('url(./images/tree.jpg)').setClass('trunk');
+        cells[index].setClass('trunk');
     }
 };
 GameManager.prototype._makeLeaf = function(cells) {
     var leafArr = ['313', '413', '513', '412', '1510', '1610', '1710', '159', '169', '179', '158', '168', '178'];
     for (let i = 0; i < leafArr.length; i++) {
         let index = leafArr[i];
-        cells[index].setBackgroundImg('url(./images/leaf.jpg)').setClass('leaf');
+        cells[index].setClass('leaf');
     }
 };
 GameManager.prototype._makeDirt = function(cells) {
@@ -73,9 +82,9 @@ GameManager.prototype._makeDirt = function(cells) {
         for (var n = 0; n < 20; n++) {
             let index = '' + n + m + '';
             if (m === 14)
-            cells[index].setBackgroundImg('url(./images/topDirt.png)').setClass('topDirt');
+            cells[index].setClass('topDirt');
             else
-                cells[index].setBackgroundImg('url(./images/dirt.jpg)').setClass('dirt');
+                cells[index].setClass('dirt');
         }
     }
 };

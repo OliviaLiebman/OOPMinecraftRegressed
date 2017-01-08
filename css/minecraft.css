@@ -56,3 +56,28 @@ body{
 #showMaterial{
 
 }
+.dirt{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/dirt.jpg");
+}
+.stone{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/stone.jpg");
+}
+.leaf{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/leaf.jpg");
+}
+.trunk{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/tree.jpg");
+}
+.topDirt{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../images/topDirt.png");
+}

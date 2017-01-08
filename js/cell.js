@@ -32,7 +32,15 @@ class Cell {
     }
     setClass(imgClass) {
         this.imgClass = imgClass;
+        this.element.attr('data-type', imgClass);
         this.element.addClass(imgClass);
+    }
+    getAttr() {
+        return this.element.attr('data-type');
+    }
+
+    pullClass(x) {
+        this.element.removeClass(x);
     }
     setBackgroundColor(backgroundColor) {
         this.element.css('background-color', backgroundColor);
