@@ -1,0 +1,58 @@
+body{
+    width: 100%;
+    margin: 0px;
+}
+.menu{
+    width: 150px;
+    background-color: black;
+    height: 430px;
+    display: inline-block;
+    position: absolute;
+    top:0;
+    right: 10em;
+}
+.grid{
+    border: 1px solid #ddd;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(25%);
+}
+.row{
+    margin: 0;
+}
+.cell {
+    border: 1px solid #ddd;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: top;
+    background-size: cover;
+}
+.tool{
+    width: 60px;
+    height: 60px;
+    border: 1px solid grey;
+    display: block;
+    position: relative;
+    transform: translate(40%,50%);
+    margin: 10px;
+    padding: 5px;
+}
+#shovel{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/shovel.png");
+}
+#axe{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/axe.png");
+}
+#pickaxe{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/pickaxe.png");
+}
+#showMaterial{
+
+}
