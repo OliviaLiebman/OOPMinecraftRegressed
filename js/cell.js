@@ -8,24 +8,19 @@ class Cell {
     }
     isClickable(toolId) {
         if (this.imgClass === 'leaf' && toolId === 'axe') {
-            console.log('leaf');
             return true;
         }
         if (this.imgClass === 'trunk' && toolId === 'axe') {
             console.log(this.imgClass);
-            console.log('trunk');
             return true;
         }
         if (this.imgClass === 'stone' && toolId === 'pickaxe') {
-            console.log('stone');
             return true;
         }
         if (this.imgClass === 'dirt' && toolId === 'shovel') {
-            console.log('dirt');
             return true;
         }
         if (this.imgClass === 'topDirt' && toolId === 'shovel') {
-            console.log('topDirt');
             return true;
         }
         return false;

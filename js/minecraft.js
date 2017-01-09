@@ -1,6 +1,9 @@
 
 'use strict';
 var selected_tool = '';
+var showMaterialClass = '';
+var ifShowMaterialClick = false;
+
 var GameManager = function() {
     this.cells = this.initGame();
 };
@@ -30,15 +33,23 @@ GameManager.prototype._initGrid = function() {
     return cells;
 };
 GameManager.prototype._clickedCell = function(cell) {
-    if (cell.isClickable(selected_tool) ) {
+    if (cell.isClickable(selected_tool) && ifShowMaterialClick === false ) {
         var currentDataType = cell.getAttr('data-type');
         cell.pullClass(currentDataType);
         $('#showMaterial').removeClass();
         $('#showMaterial').addClass('tool');
         $('#showMaterial').addClass(currentDataType);
+        $('#showMaterial').attr('data-type', currentDataType);
+        showMaterialClass = currentDataType;
     }
-
-};
+    $('#showMaterial').click(function() {
+        ifShowMaterialClick = true;
+    });
+    if (ifShowMaterialClick) {
+        cell.setClass(showMaterialClass);
+        ifShowMaterialClick = false;
+    }
+}
 
 GameManager.prototype._setUpGame = function(cells) {
     this._makeCloud(cells);
