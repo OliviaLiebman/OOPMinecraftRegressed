@@ -48,6 +48,9 @@ GameManager.prototype._clickedCell = function(cell) {
     if (ifShowMaterialClick) {
         cell.setClass(showMaterialClass);
         ifShowMaterialClick = false;
+        $('#showMaterial').removeClass();
+        $('#showMaterial').addClass('tool');
+
     }
 }
 
